@@ -6,33 +6,20 @@
   
   <!-- The Basics -->
   <groupId>cj.mf</groupId>
-  <artifactId>concurrent</artifactId>
+  <artifactId>concurrent-parent</artifactId>
   <version>1.0.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-  
-  <parent>
-    <groupId>cj.mf</groupId>
-    <artifactId>concurrent-parent</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-    <!--
-        <relativePath>../</relativePath>
-    -->
-  </parent>
+  <packaging>pom</packaging>
   <!--
+      <dependencies></dependencies>
+      <parent></parent>
       <dependencyManagement></dependencyManagement>
-      <modules></modules>
   -->
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+  <modules>
+    <module>concurrent</module>
+  </modules>
+  <!--
+      <properties></properties>
+  -->
   
   <!-- Build Settings -->
   <!--
@@ -41,14 +28,35 @@
   -->
   
   <!-- More Project Information -->
-  <name>concurrent</name>
+  <name>concurrent-parent</name>
+  <description>parent pom for concurrent project</description>
+  <url>https://github.com/pbj23000/concurrent</url>
+  <inceptionYear>2015</inceptionYear>
   <!--
-      <description></description>
-      <url></url>
-      <inceptionYear></inceptionYear>
       <licenses></licenses>
-      <organization></organization>
-      <developers></developers>
+  -->
+  <organization>
+    <name>cjmf</name>
+    <url>http://cjmf.work</url>
+  </organization>
+  <developers>
+    <developer>
+      <id>pbj23000</id>
+      <name>cjmf</name>
+      <email>pbj2300@gmail.com</email>
+      <url>http://cjmf.work</url>
+      <organization>cjmf</organization>
+      <organizationUrl>http://cjmf.work</organizationUrl>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>America/Denver</timezone>
+      <properties>
+        <picUrl>http://psnprofiles.com/lib/img/avatars/m/1eb357.png</picUrl>
+      </properties>
+    </developer>
+  </developers>
+  <!--
       <contributors></contributors>
   -->
   
@@ -65,3 +73,4 @@
       <profiles></profiles>
   -->
 </project>
+
