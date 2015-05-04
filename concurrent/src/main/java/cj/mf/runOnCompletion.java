@@ -3,7 +3,10 @@ package cj.mf;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 
+import cj.mf.domain.Customer;
 import cj.mf.domain.Document;
+import cj.mf.domain.Route;
+import cj.mf.domain.Shop;
 import org.slf4j.Logger;
 
 /**
@@ -63,11 +66,48 @@ public class runOnCompletion {
         return relevanceFuture;
     }
 
-    /*
-    public CompletableFuture<Double> ask5() {
-
+    public CompletableFuture<Route> ask5() {
+        final CompletableFuture<Customer> customerFuture = loadCustomerDetails(123);
+        final CompletableFuture<Shop> shopFuture = closestShop();
+        final CompletableFuture<Route> routeFuture =
+                customerFuture.thenCombine(shopFuture, (cust, shop) -> findRoute(cust, shop));
+        return routeFuture;
     }
-    */
+
+    public CompletableFuture<Route> ask6() {
+        final CompletableFuture<Customer> customerFuture = loadCustomerDetails(123);
+        final CompletableFuture<Shop> shopFuture = closestShop();
+        final CompletableFuture<Route> routeFuture =
+                customerFuture.thenCombine(shopFuture, this::findRoute);
+        return routeFuture;
+    }
+
+    public void ask7() {
+        final CompletableFuture<Customer> customerFuture = loadCustomerDetails(123);
+        final CompletableFuture<Shop> shopFuture = closestShop();
+        customerFuture.thenAcceptBoth(shopFuture, (cust, shop) -> {
+            final Route route = findRoute(cust, shop);
+            // refresh GUI w/ route
+        });
+    }
+
+    private Route findRoute(Customer cust, Shop shop) {
+        return new Route();
+    }
+
+    private CompletableFuture<Shop> closestShop() {
+        Executor executor = null;
+        final CompletableFuture<Shop> shopFuture =
+                CompletableFuture.supplyAsync(() -> getShop(), executor);
+        return shopFuture;
+    }
+
+    private CompletableFuture<Customer> loadCustomerDetails(int i) {
+        Executor executor = null;
+        final CompletableFuture<Customer> customerFuture =
+                CompletableFuture.supplyAsync(() -> getCustomer(i), executor);
+        return customerFuture;
+    }
 
     private String longRunningTask(Object params) {
         // ... long running task ...
@@ -89,5 +129,13 @@ public class runOnCompletion {
     private Double returnRelevance(Document d) {
         // ... long running process ...
         return .42;
+    }
+
+    private Customer getCustomer(int i) {
+        return new Customer();
+    }
+
+    private Shop getShop() {
+        return new Shop();
     }
 }

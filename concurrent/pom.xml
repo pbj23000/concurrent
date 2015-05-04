@@ -27,9 +27,7 @@
     <groupId>cj.mf</groupId>
     <artifactId>concurrent-parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <!--
         <relativePath>../</relativePath>
-    -->
   </parent>
   <!--
       <dependencyManagement></dependencyManagement>
@@ -47,9 +45,9 @@
   
   <!-- More Project Information -->
   <name>concurrent</name>
-  <!--
-      <description></description>
-      <url></url>
+  <description>a tutorial</description>
+  <url>http://www.nurkiewicz.com/2013/05/java-8-definitive-guide-to.html</url>
+    <!--
       <inceptionYear></inceptionYear>
       <licenses></licenses>
       <organization></organization>
